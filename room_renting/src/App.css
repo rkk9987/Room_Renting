@@ -1,0 +1,15 @@
+.navProfile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-nav {
+  width: 93%;
+}
+
+/* #root::before {
+  background: url("./assets//danist-soh-dqXiw7nCb9Q-unsplash.jpg");
+  position: absolute;
+  top: 0px;
+  z-index: -1;
+} */

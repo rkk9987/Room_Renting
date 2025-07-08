@@ -1,0 +1,21 @@
+#root {
+  position: relative;
+  min-height: 100vh;
+  /* overflow: hidden; */
+}
+
+/* Create a blurred background layer */
+#root::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/7.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(1px); /* 🔥 blur here */
+  z-index: -1; /* Push behind everything */
+}
