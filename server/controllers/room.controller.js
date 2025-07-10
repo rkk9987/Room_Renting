@@ -98,10 +98,24 @@ const patchRoomOwner = async (req, res) => {
     return res.status(500).json({ msg: "Something went wrong", error });
   }
 };
+
+const searchRoom = async (req, res) => {
+  try {
+    const { name } = req.body;
+    const data = await room.find({ name: name });
+    if (data.length === 0)
+      return res.status(403).json({ msg: "No rooms found" });
+    return res.status(200).json(data);
+  } catch (error) {
+    return res.status(500).json({ msg: "Something went wrong", error });
+  }
+};
+
 module.exports = {
   getRoom,
   postRoom,
   patchRoom,
   delRoom,
   patchRoomOwner,
+  searchRoom,
 };

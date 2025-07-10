@@ -44,7 +44,7 @@ const Register = () => {
       .then((res) => {
         console.log(res);
         toast.success(res.data.msg);
-        navigate("/");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);

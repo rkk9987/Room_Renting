@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-const Nav = () => {
+
+const Nav = (props) => {
   const navigate = useNavigate();
+  const [searchRoom, setSearchRoom] = useState("");
 
   const logoutH = () => {
     localStorage.removeItem("token");
@@ -11,6 +13,24 @@ const Nav = () => {
     toast.success("Logged Out successfully");
 
     navigate("/");
+  };
+
+  const seH = (e) => {
+    setSearchRoom(e.target.value);
+  };
+
+  const searcHandler = (e) => {
+    e.preventDefault();
+    if (searchRoom.trim() === "") toast.info("Enter something to search");
+    else {
+      if (props.fromNav) {
+        console.log("inside");
+
+        props.fromNav(searchRoom);
+      }
+      // console.log(searchRoom);
+      setSearchRoom("");
+    }
   };
 
   return (
@@ -55,6 +75,34 @@ const Nav = () => {
             )}
           </div>
         </div>
+        <form class="form-inline my-2 my-lg-0">
+          {props.search ? (
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder={props.search}
+              aria-label="Search"
+              value={searchRoom}
+              onChange={seH}
+            />
+          ) : (
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search Room"
+              aria-label="Search"
+              value={searchRoom}
+              onChange={seH}
+            />
+          )}
+
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            onClick={searcHandler}
+          >
+            Search
+          </button>
+        </form>
       </nav>
     </div>
   );

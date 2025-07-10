@@ -16,6 +16,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  filter: blur(1px); /* 🔥 blur here */
+  filter: blur(5px); /* 🔥 blur here */
   z-index: -1; /* Push behind everything */
+}
+.important-text {
+  color: white !important;
 }

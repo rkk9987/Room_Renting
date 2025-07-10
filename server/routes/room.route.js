@@ -11,6 +11,7 @@ const {
   patchRoom,
   delRoom,
   patchRoomOwner,
+  searchRoom,
 } = require("../controllers/room.controller");
 
 roomRouter.get(
@@ -39,5 +40,7 @@ roomRouter.delete(
   verifyRole("admin", "manager"),
   delRoom
 );
+
+roomRouter.post("/searchRoom", getUserAuthenticate, searchRoom);
 
 module.exports = roomRouter;
